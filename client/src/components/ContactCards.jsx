@@ -1,12 +1,12 @@
 import React from "react";
 import ContactCard from "./ContactCard";
 
-function ContactCards({ contacts }) {
+function ContactCards({ contacts, deleteContact }) {
   
   const arrayOfCards = contacts.map((contact, i) => {
     return (
       <div key={i}>
-        <ContactCard contact={contact} />
+        <ContactCard deleteContact={deleteContact} contact={contact} />
       </div>
     )
   })

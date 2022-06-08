@@ -9,6 +9,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   
 
+  //fetches all contacts
   const getContacts = () => {
     axios
       .get("/api/contacts", {
@@ -21,19 +22,29 @@ function App() {
       });
   };
 
+  //shows form
   const showForm = () => {
     setShowModal(true);
   }
 
+  const deleteContact = (contact) => {
+    axios.delete(`/api/contacts/${contact._id}`)
+      .then(res => {
+        getContacts();
+    })
+  }
+
+  //loads contacts on initial load
   useEffect(() => {  
-      getContacts();
-    
+      getContacts();    
   }, []);
+
+
 
   return (
     <div className="bg-gray-200">
       <h1 className="text-center text-3xl font-bold text-black">Contacts</h1>
-      <Modal showModal={showModal} />
+      <Modal showModal={showModal} setShowModal={setShowModal} getContacts={getContacts} />       
       <section className="flex justify-center pt-5">
         <button
           className="bg-blue-500 w-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -43,7 +54,7 @@ function App() {
         </button>
       </section>
       <section className="p-20 grid grid-cols-1 gap-5  md:grid-cols-4">
-        <ContactCards contacts={contacts} />
+        <ContactCards deleteContact={deleteContact} contacts={contacts} />
       </section>
     </div>
   );
