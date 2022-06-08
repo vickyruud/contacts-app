@@ -19,10 +19,9 @@ const ContactSchema = new Schema({
     type: String,
     required: [true, 'Phone number is required'],
   },
-  image: {
-    data: Buffer,
-    contentType: String,
-    required: [true, 'First name is required'],
+  image_url: {
+    type: String,
+    required: [true, 'Image is required'],
   },
 
 });
