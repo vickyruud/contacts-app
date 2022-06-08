@@ -9,7 +9,7 @@ function NewContact({
   setSelectedContact,
   
 }) {
-  const [editContact, setEditContact] = useState(contact ? contact : null);
+  // const [editContact, setEditContact] = useState(contact ? contact : null);
   const [firstName, setFirstName] = useState(
     contact ? contact.firstName : null
   );
@@ -27,6 +27,7 @@ function NewContact({
       .then(res => {
         console.log(res.data);
         getContacts();
+        setSelectedContact('');
     })
   }
 
@@ -34,7 +35,6 @@ function NewContact({
     event.preventDefault();
     let contactObj = {};
     if (contact) {
-      console.log("here");
       contactObj = {
         firstName,
         lastName,
@@ -119,7 +119,7 @@ function NewContact({
             <UploadImage setImageUrl={setImageUrl} imageUrl={imageUrl} />
             <div className="flex items-baseline justify-between">
               <button className="bg-blue-500 w-auto hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Create
+                Submit
               </button>
               <button
                 onClick={handleCancel}

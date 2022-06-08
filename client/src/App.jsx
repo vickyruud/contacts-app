@@ -20,6 +20,7 @@ function App() {
       })
       .then((res) => {
         setContacts(res.data);
+        setSelectedContact('')
       });
   };
 
@@ -33,6 +34,8 @@ function App() {
     axios.delete(`/api/contacts/${contact._id}`)
       .then(res => {
         getContacts();
+        setSelectedContact('')
+
     })
   }
 
@@ -40,7 +43,9 @@ function App() {
 
   //loads contacts on initial load
   useEffect(() => {  
-      getContacts();    
+    getContacts(); 
+    setSelectedContact('')
+    
   }, []);
 
 
