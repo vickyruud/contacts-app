@@ -1,4 +1,5 @@
 # Contacts App
+
 An app that allows users to store, create, edit and delete contacts. This has been built using the NodeJs, Express, MongoDB and React.
 
 ## Features
@@ -18,6 +19,6 @@ An app that allows users to store, create, edit and delete contacts. This has be
 - Have fun!
 
 ## Screenshots
-![Home](http://full/path/to/img.jpg "Optional title")
-![New Contact](http://full/path/to/img.jpg "Optional title")
 
+![Home](https://github.com/vickyruud/contacts-app/blob/main/client/public/screenshots/home.png)
+![New Contact](https://github.com/vickyruud/contacts-app/blob/main/client/public/screenshots/addnewcontact.png)
