@@ -4,7 +4,6 @@ const Contact = require('../models/contact')
 
 router.get('/contacts', (req, res, next) => {
   // get placeholder
-  console.log('here');
   Contact.find({})
     .then((data) => res.json(data))
     .catch(next);
