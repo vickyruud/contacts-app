@@ -18,4 +18,6 @@ An app that allows users to store, create, edit and delete contacts. This has be
 - Have fun!
 
 ## Screenshots
+![Home](http://full/path/to/img.jpg "Optional title")
+![New Contact](http://full/path/to/img.jpg "Optional title")
 
