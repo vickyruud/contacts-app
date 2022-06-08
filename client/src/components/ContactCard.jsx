@@ -2,7 +2,7 @@ import React from 'react'
 
 function ContactCard({contact}) {
   return (
-    <figure className="bg-white w-64 h-80 rounded-lg  shadow-md pt-7 m-2">
+    <figure className="bg-white w-80 h-80 rounded-lg  shadow-md pt-7">
         <img
           alt="user"
           src={contact.image_url}

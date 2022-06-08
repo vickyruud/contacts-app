@@ -2,11 +2,12 @@ import React from "react";
 import ContactCard from "./ContactCard";
 
 function ContactCards({ contacts }) {
-  console.log(contacts)
   
-  const arrayOfCards = contacts.map(contact => {
+  const arrayOfCards = contacts.map((contact, i) => {
     return (
-      <ContactCard contact={contact} id={contact.id} />
+      <div key={i}>
+        <ContactCard contact={contact} />
+      </div>
     )
   })
 
