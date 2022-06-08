@@ -7,7 +7,6 @@ function NewContact({
   getContacts,
   setShowModal,
   setSelectedContact,
-  
 }) {
   // const [editContact, setEditContact] = useState(contact ? contact : null);
   const [firstName, setFirstName] = useState(
@@ -19,17 +18,25 @@ function NewContact({
     contact ? contact.phoneNumber : null
   );
   const [imageUrl, setImageUrl] = useState(contact ? contact.image_url : null);
-
+  const [phoneError, setPhoneError] = useState(false);
 
   const editThisContact = (contact) => {
     console.log(contact);
-    axios.post(`/api/update/${contact._id}`, contact)
-      .then(res => {
-        console.log(res.data);
-        getContacts();
-        setSelectedContact('');
-    })
-  }
+    axios.post(`/api/update/${contact._id}`, contact).then((res) => {
+      console.log(res.data);
+      getContacts();
+      setSelectedContact("");
+    });
+  };
+
+  const validatePhoneNumber = (value) => {
+    if (value.length !== 10) {
+      setPhoneError(true);
+    } else {
+      setPhoneNumber(value);
+      setPhoneError(false);
+    }
+  };
 
   const saveContact = (event) => {
     event.preventDefault();
@@ -46,6 +53,7 @@ function NewContact({
       editThisContact(contactObj);
       setShowModal(false);
       setSelectedContact("");
+      setPhoneError(false);
     } else {
       contactObj = {
         firstName,
@@ -58,6 +66,7 @@ function NewContact({
         getContacts();
         setShowModal(false);
         setSelectedContact("");
+        setPhoneError(false);
       });
     }
   };
@@ -112,9 +121,10 @@ function NewContact({
                 type="tel"
                 placeholder="Phone Number"
                 defaultValue={contact ? contact.phoneNumber : ""}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => validatePhoneNumber(e.target.value)}
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-gray-900 dark:text-gray-900"
               />
+              {phoneError ? <p>Invalid Phone Number</p> : null}
             </div>
             <UploadImage setImageUrl={setImageUrl} imageUrl={imageUrl} />
             <div className="flex items-baseline justify-between">

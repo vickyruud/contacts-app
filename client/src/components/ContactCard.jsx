@@ -17,6 +17,9 @@ function ContactCard({
     setShowModal(true);
   };
 
+ 
+
+
   return (
     <figure className="bg-white w-80 h-80 rounded-lg  shadow-md pt-7">
       <img
