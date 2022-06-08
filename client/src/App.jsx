@@ -10,21 +10,26 @@ function App() {
   const [selectedContact, setSelectedContact] = useState([]);
   const [search, setSearch] = useState("");
 
+  
   useEffect(() => {
-
     if (!search) {
-      getContacts()
+      getContacts();
     } else {
-      setContacts(contacts.filter(contact => {        
-        if (contact.firstName.toLowerCase().includes((search.toLowerCase())) || contact.lastName.toLowerCase().includes((search.toLowerCase()))) {
-          return true;
-        } else {
-          return false;
-        }
-      }))
-      
+      setContacts(
+        contacts.filter((contact) => {
+          if (
+            contact.firstName.toLowerCase().includes(search.toLowerCase()) ||
+            contact.lastName.toLowerCase().includes(search.toLowerCase())
+          ) {
+            return true;
+          } else {
+            return false;
+          }
+        })
+      );
     }
-  }, [search, contacts])
+    // eslint-disable-next-line
+  }, [search]);
 
   //fetches all contacts
   const getContacts = () => {
@@ -52,6 +57,20 @@ function App() {
     });
   };
 
+  const compareBy = (key) => {
+    return function (a, b) {
+      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return 1;
+      return 0;
+    };
+  };
+
+  const sortLastName = (key) => {
+    let arrayCopy = [...contacts];
+    arrayCopy.sort(compareBy(key));
+    setContacts(arrayCopy);
+  };
+
   //loads contacts on initial load
   useEffect(() => {
     getContacts();
@@ -76,6 +95,15 @@ function App() {
           Add new contact
         </button>
       </section>
+      <section className="mt-3  flex flex-row justify-center">
+        <button
+          className="bg-blue-500 w-fit hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => {sortLastName('lastName')}}
+        >
+          Sort by Last Name
+        </button>
+      </section>
+
       <section className="mt-3  flex flex-row justify-center">
         <input
           className="

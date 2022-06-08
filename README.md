@@ -13,6 +13,7 @@ An app that allows users to store, create, edit and delete contacts. This has be
 
 - Fork and clone this repo
 - Run "npm i" in the main folder to install all server dependencies.
+- In the server folder, create a .env file using the .env.example as a template.
 - CD into the client folder and run "npm i" to install all client dependencies.
 - Open two terminals one for the server and one for client.
 - Use "npm start" in both terminals to run the server and client.

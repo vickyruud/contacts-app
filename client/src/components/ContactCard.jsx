@@ -1,13 +1,16 @@
 import React from "react";
 import { AiFillEdit } from "react-icons/ai";
+import Email from "./Email";
 
 function ContactCard({
   contact,
   deleteContact,
   selectedContact,
   setSelectedContact,
-  setShowModal
+  setShowModal,
 }) {
+  
+  
   const handleDelete = () => {
     deleteContact(contact);
   };
@@ -17,8 +20,9 @@ function ContactCard({
     setShowModal(true);
   };
 
- 
+  const emailBody = `Name: ${contact.firstName} ${contact.lastName} Email: ${contact.email} Phone:${contact.phoneNumber}`
 
+ 
 
   return (
     <figure className="bg-white w-80 h-80 rounded-lg  shadow-md pt-7">
@@ -67,6 +71,15 @@ function ContactCard({
           onClick={editContact}
         >
           <AiFillEdit />
+        </button>
+        <button
+          className="bg-teal-500 hover:bg-sky-600
+            text-white
+            font-bold py-2 px-4
+            rounded w-fit"
+        >
+          <Email email="aprajit.k@gmail.com" subject={`Sharing ${contact.firstName}'s details`} body={emailBody}/>
+          
         </button>
       </section>
     </figure>
