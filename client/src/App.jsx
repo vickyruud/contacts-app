@@ -31,7 +31,7 @@ function App() {
     // eslint-disable-next-line
   }, [search]);
 
-  //fetches all contacts
+  //fetches all contacts from database
   const getContacts = () => {
     axios
       .get("/api/contacts", {
