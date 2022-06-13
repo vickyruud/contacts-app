@@ -6,6 +6,8 @@ function UploadImage({ imageUrl, setImageUrl }) {
   const [loading, setLoading] = useState(false);
   const [imageSelected, setImageSelected] = useState("");
 
+
+  //uploads image to cloudinary
   const uploadImage = () => {
     const formData = new FormData();
 
@@ -18,6 +20,8 @@ function UploadImage({ imageUrl, setImageUrl }) {
         setLoading(false);
       });
   };
+
+  // handles loading image
   const handleLoading = (event) => {
     event.preventDefault();
     if (imageSelected !== null) {
